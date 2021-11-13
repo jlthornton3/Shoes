@@ -8,17 +8,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Shoes I Have</h1>
+<h1>Update Show</h1>
 <div class="content">
-    <form id="add-shoe-form">
+    <form id="update-shoe-form">
         <input type="text" name="brand" placeholder="Shoe Brand">
         <input type="text" name="style" placeholder="Shoe Style">
         <input type="text" name="color" placeholder="Shoe Color">
-        <button>Add Shoe</button>
+        <button>Update Shoe</button>
     </form>
     
-    <ul id="shoes-list">
-    </form>
 </div>
 <script type="module">
     // Import the functions you need from the SDKs you need
@@ -52,7 +50,7 @@
   }
 
   const shoesList =document.querySelector('#shoes-list');
-  const form = document.querySelector('#add-shoe-form');
+  const form = document.querySelector('#update-shoe-form');
   const formup = document.querySelector('#shoes-list');
 
   function renderShoes(dc){
@@ -92,16 +90,18 @@
       upd.addEventListener('click', (e) => {
         e.stopPropagation();
         let id = e.target.parentElement.getAttribute('data-id');
-
-
-        
+       // let upbrand=e.target.parentElement.getAttribute('value');
+ 
+ //       var row = e.formup.ubrand.textContent;
+//        var row ="test"
          updateDoc(doc(db, "shoes", id),{
-                brand: "Nike",
-                style: "tennis",
-                color: "black"
+                brand: "test",
+                style: "test",
+                color: "test"
             });
+        console.log("value",row);
         console.log("update with id: ", id);  
-        })
+      })
 
       cross.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -118,10 +118,10 @@
     })
     
 
-    form.addEventListener(('submit'), (e) => {
+    form.updateEventListener(('submit'), (e) => {
         e.preventDefault();
         try {
-            const docRef = addDoc(collection(db, "shoes"), {
+            const docRef = updateDoc(collection(db, "shoes", id), {
             brand: form.brand.value,
             style: form.style.value,
             color: form.color.value
